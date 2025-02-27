@@ -10,12 +10,13 @@ logger = logging.getLogger(__name__)
 def main(input_url):
     yt_opts = {
         "verbose": False,
-        "format": "bestvideo+bestaudio",
+        "format": "best/bestvideo+bestaudio",
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
         "skip_download": False,
         "outtmpl": "downloads/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s",
         "subtitleslangs": ["en"],
+        "writethumbnail": True,
         "postprocessors": [
             {
                 "key": "FFmpegVideoConvertor",
