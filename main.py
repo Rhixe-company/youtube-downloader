@@ -37,7 +37,7 @@ def main(input_url, save_path):
             #     "already_have_thumbnail": True,  # overwrite any thumbnails already present
             # },
             {
-                "key": "FFmpegInputConvertor",
+                "key": "FFmpegVideoConvertor",
                 "preferedformat": "mp4",
             },
         ],
