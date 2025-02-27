@@ -1,0 +1,14 @@
+-r ./base.txt
+
+mypy
+pytest
+pytest-sugar
+sphinx
+sphinx-autobuild
+ruff
+coverage
+djlint
+pre-commit
+factory-boy
+black
+yt-dlp[curl-cffi]
