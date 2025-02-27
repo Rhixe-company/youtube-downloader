@@ -29,9 +29,9 @@ def main(input_url, save_path):
         "subtitleslangs": ["en"],
         # "subtitleslangs": ["en", "fr"],
         "postprocessors": [
-            {
-                "key": "FFmpegMetadata",
-            },
+            # {
+            #     "key": "FFmpegMetadata",
+            # },
             # {
             #     "key": "EmbedThumbnail",
             #     "already_have_thumbnail": True,  # overwrite any thumbnails already present
