@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 def main(input_url):
     yt_opts = {
         "verbose": False,
-        "format": "best/bestvideo+bestaudio",
+        "format": "bv+ba",
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
         "skip_download": False,
@@ -20,7 +20,7 @@ def main(input_url):
         "postprocessors": [
             {
                 "key": "FFmpegVideoConvertor",
-                "preferedformat": "mp4",
+                "preferedformat": "mkv",
             },
         ],
     }

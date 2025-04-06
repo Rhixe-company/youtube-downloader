@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 def main(input_url):
     yt_opts = {
         "verbose": False,
-        "format": "best/bestvideo+bestaudio",
+        "format": "bv+ba",
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
         "skip_download": False,
@@ -20,7 +20,7 @@ def main(input_url):
         "postprocessors": [
             {
                 "key": "FFmpegVideoConvertor",
-                "preferedformat": "mp4",
+                "preferedformat": "mkv",
             },
         ],
     }
@@ -33,7 +33,6 @@ def main(input_url):
 
 
 if __name__ == "__main__":
-    save_path = "downloads"
-    input_url = input("Enter your URL: ")
-    # url = "https://youtube.com/playlist?list=PL-2EBeDYMIbTLulc9FSoAXhbmXpLq2l5t&si=gF6wqVQf4vtWZ5d0"
-    main(input_url)
+    # input_url = input("Enter your URL: ")
+    url = "https://youtu.be/4VvYOWiQch4?si=S0G5-0PVMBZbAN4Z"
+    main(url)
