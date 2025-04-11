@@ -15,7 +15,7 @@ def main(input_url):
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
         "skip_download": False,
-        "outtmpl": "downloads/%(title)s.%(ext)s",
+        "outtmpl": "downloads/%(uploader)s/%(title)s.%(ext)s",  # %(uploader)s-97ac0bc8/%(upload_date)s__%(id)s.%(ext)s
         "subtitleslangs": ["en"],
         "writethumbnail": True,
         "postprocessors": [
@@ -34,7 +34,7 @@ def main(input_url):
 if __name__ == "__main__":
     urls = [
         # "https://youtu.be/ZJr7mmaEXiE?si=qhAXq4E50yhysvrh",
-        "https://youtu.be/beVGYjMSRRk?si=6dxG4tqL49t1j7fK",
+        # "https://youtu.be/beVGYjMSRRk?si=6dxG4tqL49t1j7fK",
         "https://youtu.be/lc1sOvRaFpg?si=IVvhHtii21ZNlZA_",
         "https://youtu.be/PgHaH8tGdWw?si=Z4xPiwMl6QO1PN4Z",
         "https://youtu.be/Pc96-4_gqJ4?si=fVywee_x83PyCZba",
