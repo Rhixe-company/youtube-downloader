@@ -35,5 +35,5 @@ def main(input_url):
 if __name__ == "__main__":
     save_path = "downloads"
     # input_url = input("Enter your URL: ")
-    url = "https://youtube.com/playlist?list=PL-2EBeDYMIbSBjHGYJYl1WLUT-tbCLHOb&si=tfWgfbxGF79I7dlK"
+    url = "https://youtube.com/playlist?list=PL-2EBeDYMIbSBjHGYJYl1WLUT-tbCLHOb&si=5HAeMnFMtCaq_RIW"
     main(url)
