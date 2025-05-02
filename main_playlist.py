@@ -14,15 +14,15 @@ def main(input_url):
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
         "skip_download": False,
-        "outtmpl": "downloads/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s",
+        "outtmpl": "downloads/%(uploader)s/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s",
         "subtitleslangs": ["en"],
         "writethumbnail": True,
-        "postprocessors": [
-            {
-                "key": "FFmpegVideoConvertor",
-                "preferedformat": "mkv",
-            },
-        ],
+        # "postprocessors": [
+        #     {
+        #         "key": "FFmpegVideoConvertor",
+        #         "preferedformat": "mkv",
+        #     },
+        # ],
     }
     msg = f"Starting {input_url}"
     logger.info(msg)
@@ -34,6 +34,6 @@ def main(input_url):
 
 if __name__ == "__main__":
     save_path = "downloads"
-    input_url = input("Enter your URL: ")
-    # url = "https://youtube.com/playlist?list=PL-2EBeDYMIbTLulc9FSoAXhbmXpLq2l5t&si=gF6wqVQf4vtWZ5d0"
-    main(input_url)
+    # input_url = input("Enter your URL: ")
+    url = "https://youtube.com/playlist?list=PL-2EBeDYMIbSBjHGYJYl1WLUT-tbCLHOb&si=tfWgfbxGF79I7dlK"
+    main(url)

@@ -14,15 +14,15 @@ def main(input_url):
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
         "skip_download": False,
-        "outtmpl": "downloads/%(title)s.%(ext)s",
+        "outtmpl": "downloads/%(uploader)s/%(title)s.%(ext)s",
         "subtitleslangs": ["en"],
         "writethumbnail": True,
-        "postprocessors": [
-            {
-                "key": "FFmpegVideoConvertor",
-                "preferedformat": "mkv",
-            },
-        ],
+        # "postprocessors": [
+        #     {
+        #         "key": "FFmpegVideoConvertor",
+        #         "preferedformat": "mp4",
+        #     },
+        # ],
     }
     msg = f"Starting {input_url}"
     logger.info(msg)
@@ -34,5 +34,5 @@ def main(input_url):
 
 if __name__ == "__main__":
     # input_url = input("Enter your URL: ")
-    url = "https://youtu.be/4VvYOWiQch4?si=S0G5-0PVMBZbAN4Z"
+    url = "https://youtu.be/22TkO8og4_Q?si=ercIgmh605bsGm-7"
     main(url)
