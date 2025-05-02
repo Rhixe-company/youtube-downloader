@@ -10,8 +10,8 @@ logger = logging.getLogger(__name__)
 def main(input_url):
     yt_opts = {
         "verbose": False,
-        # "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4",
-        "format": "bv+ba",
+        "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4",
+        # "format": "bv+ba",
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
         "skip_download": False,
