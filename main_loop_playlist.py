@@ -19,7 +19,7 @@ def main(input_url):
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
         "skip_download": False,
-        "outtmpl": "downloads/%(uploader)s/%(title)s.%(ext)s",  # %(uploader)s-97ac0bc8/%(upload_date)s__%(id)s.%(ext)s
+        "outtmpl": "downloads/%(uploader)s/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s",  # %(uploader)s-97ac0bc8/%(upload_date)s__%(id)s.%(ext)s
         "subtitleslangs": ["en"],
         "writethumbnail": True,
         "postprocessors": [
@@ -37,13 +37,13 @@ def main(input_url):
 
 if __name__ == "__main__":
     urls = [
-        "https://youtu.be/B3DHE9RIimY?si=vVwZNesd0KTzpm9d",
-        "https://youtu.be/8nh61pOAe8A?si=flUG4fENv4Elpyk8",
-        "https://youtu.be/cUK9nSQuSIA?si=xUg5ITYMI1xxq8MY",
-        "https://youtu.be/9CMvL0oN6tI?si=_B9YK0GXXheLKY1B",
-        "https://youtu.be/BkuxmZeBSRk?si=BuHGFyCiA-kKKM5v",
-        "https://youtu.be/pZSYhei8yPI?si=GNilrqp5LPXZCjeW",
-        "https://youtu.be/5V_APS3l7t0?si=P_sUe7by1Z9FpqH6",
+        "https://youtu.be/B3DHE9RIimY?si=aaH_-1iXo7MK2nQA",
+        # "https://youtu.be/8nh61pOAe8A?si=flUG4fENv4Elpyk8",
+        # "https://youtu.be/cUK9nSQuSIA?si=xUg5ITYMI1xxq8MY",
+        # "https://youtu.be/9CMvL0oN6tI?si=_B9YK0GXXheLKY1B",
+        # "https://youtu.be/BkuxmZeBSRk?si=BuHGFyCiA-kKKM5v",
+        # "https://youtu.be/pZSYhei8yPI?si=GNilrqp5LPXZCjeW",
+        # "https://youtu.be/5V_APS3l7t0?si=P_sUe7by1Z9FpqH6"
     ]
     for link in urls:
         url = link

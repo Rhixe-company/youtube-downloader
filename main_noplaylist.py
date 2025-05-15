@@ -10,19 +10,21 @@ logger = logging.getLogger(__name__)
 def main(input_url):
     yt_opts = {
         "verbose": False,
-       "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4",
+        # "format": "bestvideo+bestaudio/best",
+        "format": "136+140,298+140",  # Video format 136 or 298 with audio format 140
+        "merge_output_format": "mp4",  # Merge into an MP4 file
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
         "skip_download": False,
         "outtmpl": "downloads/%(uploader)s/%(title)s.%(ext)s",
         "subtitleslangs": ["en"],
         "writethumbnail": True,
-        # "postprocessors": [
-        #     {
-        #         "key": "FFmpegVideoConvertor",
-        #         "preferedformat": "mp4",
-        #     },
-        # ],
+        "postprocessors": [
+            {
+                "key": "FFmpegVideoConvertor",
+                "preferedformat": "mp4",
+            },
+        ],
     }
     msg = f"Starting {input_url}"
     logger.info(msg)
@@ -34,5 +36,5 @@ def main(input_url):
 
 if __name__ == "__main__":
     # input_url = input("Enter your URL: ")
-    url = "https://youtu.be/22TkO8og4_Q?si=ercIgmh605bsGm-7"
+    url = "https://youtu.be/g0EgwfQJew8?si=ApQZXGpU9NmPCvK3"
     main(url)

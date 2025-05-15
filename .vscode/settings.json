@@ -64,7 +64,7 @@
   },
   "python.analysis.autoImportCompletions": true,
   "python.analysis.typeCheckingMode": "basic",
-  "python.defaultInterpreterPath": "myvenv/Scripts/python",
+  // "python.defaultInterpreterPath": "myvenv/Scripts/python",
   "python.languageServer": "Pylance",
   "[python]": {
     "editor.codeActionsOnSave": {
@@ -73,7 +73,7 @@
     "editor.defaultFormatter": "charliermarsh.ruff",
     "linting.enabled": true,
     "linting.mypyEnabled": true,
-    "linting.mypyPath": "myvenv/Scripts/mypy"
+    // "linting.mypyPath": "myvenv/Scripts/mypy"
   },
   "[django-html]": {
     "editor.defaultFormatter": "monosans.djlint"
