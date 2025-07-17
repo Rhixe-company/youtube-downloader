@@ -11,8 +11,8 @@ def main(input_url):
     yt_opts = {
         "verbose": False,
         # "format": "bestvideo+bestaudio/best",
-        "format": "136+140,298+140",  # Video format 136 or 298 with audio format 140
-        "merge_output_format": "mp4",  # Merge into an MP4 file
+        "format": "136+bestaudio,298+bestaudio,232+bestaudio",  # Video format 136 or 298 with audio format 140
+        "merge_output_format": "mkv",  # Merge into an MKV file
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
         "skip_download": False,
@@ -22,7 +22,7 @@ def main(input_url):
         "postprocessors": [
             {
                 "key": "FFmpegVideoConvertor",
-                "preferedformat": "mp4",
+                "preferedformat": "mkv",
             },
         ],
     }
@@ -36,5 +36,5 @@ def main(input_url):
 
 if __name__ == "__main__":
     # input_url = input("Enter your URL: ")
-    url = "https://youtu.be/g0EgwfQJew8?si=ApQZXGpU9NmPCvK3"
+    url = "https://youtu.be/EZajJGOMWas?si=8xVXOorTAqU3T5-P"
     main(url)

@@ -10,20 +10,21 @@ logger = logging.getLogger(__name__)
 def main(input_url):
     yt_opts = {
         "verbose": False,
-        # "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4",
         "format": "136+140,298+140",  # Video format 136 or 298 with audio format 140
-        "merge_output_format": "mp4",  # Merge into an MP4 file
-        # "format": "bestvideo+bestaudio/best",
+        "merge_output_format": "mkv",  # Merge into an MKV file
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
+        # "noplaylist": False,  # Set to False to download the entire playlist
         "skip_download": False,
         "outtmpl": "downloads/%(uploader)s/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s",
-        "subtitleslangs": ["en"],
+        # "subtitleslangs": ["en"],
+        "writesubtitles": True,
+        "subtitleslangs": "all",
         "writethumbnail": True,
         "postprocessors": [
             {
                 "key": "FFmpegVideoConvertor",
-                "preferedformat": "mp4",
+                "preferedformat": "mkv",
             },
         ],
     }
@@ -38,5 +39,6 @@ def main(input_url):
 if __name__ == "__main__":
     save_path = "downloads"
     # input_url = input("Enter your URL: ")
-    url = "https://youtube.com/playlist?list=PL-2EBeDYMIbSBjHGYJYl1WLUT-tbCLHOb&si=5HAeMnFMtCaq_RIW"
+
+    url = "https://youtube.com/playlist?list=PL4cUxeGkcC9hYBP0AZ3MNdEiiZqd4mHGm&si=IDc5tiZDMpbSovEg"
     main(url)

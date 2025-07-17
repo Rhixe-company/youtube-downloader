@@ -10,12 +10,8 @@ logger = logging.getLogger(__name__)
 def main(input_url):
     yt_opts = {
         "verbose": False,
-        # "format": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4",
-        # "format": "bv+ba",
-        # "format": "bv[ext=mp4]+ba",
-        # "format": "bestvideo+bestaudio/best",
-        "format": "136+140,298+140",  # Video format 136 or 298 with audio format 140
-        "merge_output_format": "mp4",  # Merge into an MP4 file
+        "format": "136+bestaudio,298+bestaudio,232+bestaudio,612+bestaudio",  # Video format 136 or 298 with audio format 140
+        "merge_output_format": "mkv",  # Merge into an MKV file
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
         "skip_download": False,
@@ -25,7 +21,7 @@ def main(input_url):
         "postprocessors": [
             {
                 "key": "FFmpegVideoConvertor",
-                "preferedformat": "mp4",
+                "preferedformat": "mkv",
             },
         ],
     }
@@ -37,13 +33,8 @@ def main(input_url):
 
 if __name__ == "__main__":
     urls = [
-        "https://youtu.be/B3DHE9RIimY?si=vVwZNesd0KTzpm9d",
-        "https://youtu.be/8nh61pOAe8A?si=flUG4fENv4Elpyk8",
-        "https://youtu.be/cUK9nSQuSIA?si=xUg5ITYMI1xxq8MY",
-        "https://youtu.be/9CMvL0oN6tI?si=_B9YK0GXXheLKY1B",
-        "https://youtu.be/BkuxmZeBSRk?si=BuHGFyCiA-kKKM5v",
-        "https://youtu.be/pZSYhei8yPI?si=GNilrqp5LPXZCjeW",
-        "https://youtu.be/5V_APS3l7t0?si=P_sUe7by1Z9FpqH6",
+        "https://www.youtube.com/watch?v=0NTUIdUljwM",
+        # "https://youtu.be/z-ROjham50M?si=URQaE30w-fdnDAKr",
     ]
     for link in urls:
         url = link
