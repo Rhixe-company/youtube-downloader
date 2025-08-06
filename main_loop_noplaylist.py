@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 def main(input_url):
     yt_opts = {
         "verbose": False,
-        "format": "136+bestaudio,298+bestaudio,232+bestaudio,612+bestaudio",  # Video format 136 or 298 with audio format 140
+        "format": "136+bestaudio,298+bestaudio,232+bestaudio,612+bestaudio,bestvideo+bestaudio/best",  # Video format 136 or 298 with audio format 140
         "merge_output_format": "mkv",  # Merge into an MKV file
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
@@ -33,8 +33,9 @@ def main(input_url):
 
 if __name__ == "__main__":
     urls = [
-        "https://www.youtube.com/watch?v=0NTUIdUljwM",
-        # "https://youtu.be/z-ROjham50M?si=URQaE30w-fdnDAKr",
+        "https://youtu.be/FTH6Dn3AyIQ?si=7w_dVuT9JdZKgG0t",
+        "https://youtu.be/PuOVqP_cjkE?si=7ljitzZHygeg3A95",
+        "https://youtu.be/xZ1ba-RLrjo?si=6whLrlsvtYv9HPL2",
     ]
     for link in urls:
         url = link

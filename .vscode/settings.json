@@ -1,127 +1,45 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll": "always"
   },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "editor.quickSuggestions": {
-    "strings": true
+  "terminal.integrated.profiles.windows": {
+    "PowerShell -NoProfile": {
+      "source": "PowerShell",
+      "args": [
+        "-NoProfile"
+      ]
+    }
   },
-  "files.associations": {
-    "../api/templates/*.html": "html",
-    "../api/templates/**/**/**/*.html": "django-html",
-    "../api/templates/**/*.txt": "django-txt",
-    "../requirements/*.txt": "pip-requirements",
+  "terminal.integrated.profiles.linux": {
+    "zsh (login)": {
+      "path": "zsh",
+      "args": [
+        "-l"
+      ]
+    }
   },
-  "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
-  "files.insertFinalNewline": true,
-  "files.exclude": {
-    ".git": true,
-    ".build": true,
-    ".profile-oss": true,
-    "**/.DS_Store": true,
-    ".vscode-test": true,
-    "cli/target": true,
-    "build/**/*.js.map": true,
-    "build/**/*.js": {
-      "when": "$(basename).ts"
-    },
-    "out": true, // set this to true to hide the "out" folder with the compiled JS files
-    "dist": false,
-    "**/*.pyc": true,
-    ".nyc_output": true,
-    "obj": true,
-    "bin": true,
-    "**/__pycache__": true,
-    "**/node_modules": false,
-    ".vscode test": false,
-    "**/.mypy_cache/**": true
-  },
-  "search.exclude": {
-    "**/node_modules": true,
-    "cli/target/**": true,
-    ".build/**": true,
-    "out/**": true,
-    "out-build/**": true,
-    "out-vscode/**": true,
-    "i18n/**": true,
-    "extensions/**/dist/**": true,
-    "extensions/**/out/**": true,
-    "test/smoke/out/**": true,
-    "test/automation/out/**": true,
-    "test/integration/browser/out/**": true,
-    "src/vs/base/test/common/filters.perf.data.js": true,
-    "src/vs/base/test/node/uri.perf.data.txt": true,
-    "src/vs/workbench/api/test/browser/extHostDocumentData.test.perf-data.ts": true,
-    "src/vs/base/test/node/uri.test.data.txt": true,
-    "src/vs/editor/test/node/diffing/fixtures/**": true,
-    "build/loader.min": true,
-    "out": true, // set this to false to include "out" folder in search results
-    "dist": true,
-    "coverage": true,
-    "languageServer*/**": true,
-    ".vscode-test": true,
-    ".vscode test": true
-  },
-  "python.analysis.autoImportCompletions": true,
-  "python.analysis.typeCheckingMode": "basic",
-  // "python.defaultInterpreterPath": "myvenv/Scripts/python",
-  "python.languageServer": "Pylance",
-  "[python]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "always"
-    },
-    "editor.defaultFormatter": "charliermarsh.ruff",
-    "linting.enabled": true,
-    "linting.mypyEnabled": true,
-    // "linting.mypyPath": "myvenv/Scripts/mypy"
-  },
-  "[django-html]": {
-    "editor.defaultFormatter": "monosans.djlint"
-  },
-  "[properties]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "javascript.preferences.quoteStyle": "single",
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[dotenv]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "[ignore]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "[rust]": {
-    "editor.defaultFormatter": "rust-lang.rust-analyzer",
-    "editor.formatOnSave": true
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
   },
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "[JSON]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "[YAML]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "[plaintext]": {
-    "files.insertFinalNewline": true
-  },
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  // "[markdown]": {
+  //   "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  // },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
   }
 }

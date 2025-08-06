@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 def main(input_url):
     yt_opts = {
         "verbose": False,
-        "format": "136+bestaudio,298+bestaudio,232+bestaudio,612+bestaudio",  # Video format 136 or 298 with audio format 140
+        "format": "136+bestaudio,298+bestaudio,232+bestaudio,612+bestaudio,bestvideo+bestaudio/best",  # Video format 136 or 298 with audio format 140
         "merge_output_format": "mkv",  # Merge into an MKV file
         "writeautomaticsub": True,
         "subtitlesformat": "vtt",
