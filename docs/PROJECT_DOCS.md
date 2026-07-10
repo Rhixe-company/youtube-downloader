@@ -4,7 +4,7 @@
 
 A collection of Python CLI scripts for downloading YouTube videos and playlists using yt-dlp. Supports single video downloads, full playlist downloads, and batch processing from URL files. Videos are saved as MKV with embedded subtitles, metadata, and thumbnails.
 
-**Repository:** https://github.com/Rhixe-company/youtube-downloader  
+**Repository:** <https://github.com/Rhixe-company/youtube-downloader>  
 **Stack:** Python 3.8+ | yt-dlp | ffmpeg  
 **Status:** Stable / Maintenance
 
@@ -243,6 +243,7 @@ downloads/
 ### What You Get
 
 Each `.mkv` file includes:
+
 - **Video stream** — 720p H.264 (or best available)
 - **Audio stream** — Best available (AAC/Opus)
 - **Subtitles** — English (manual + auto-generated)

@@ -38,4 +38,3 @@ ruff check .
 - Validate URLs before download-related work.
 - Use polite scraping/download delays and keep yt-dlp current.
 - Treat network and filesystem failures as expected runtime conditions.
-

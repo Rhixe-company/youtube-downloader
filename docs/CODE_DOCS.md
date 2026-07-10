@@ -301,6 +301,7 @@ downloads/
 ### Error Handling Pattern
 
 All scripts use minimal error handling:
+
 - `yt_dlp` exceptions propagate to the caller
 - No retry logic for failed downloads
 - No logging beyond stdout print statements

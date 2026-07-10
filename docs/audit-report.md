@@ -45,12 +45,14 @@ The repository has no `requirements.txt` file. Users must manually install `yt-d
 - Difficulty reproducing the development environment
 
 **Remediation:**
+
 ```bash
 # Create requirements.txt
 pip freeze | grep yt-dlp > requirements.txt
 ```
 
 Or create manually:
+
 ```
 yt-dlp>=2023.0.0,<2025.0.0
 ```
@@ -81,6 +83,7 @@ except yt_dlp.utils.ExtractorError as e:
 **Impact:** A single failed download in a playlist batch stops the entire process. Network interruptions, deleted videos, or region blocks all cause unhandled crashes.
 
 **Remediation:**
+
 1. Wrap `extract_info()` calls in try/except blocks
 2. Add per-video error handling in playlist/loop scripts to skip failed items
 3. Print descriptive error messages instead of raw tracebacks
@@ -102,6 +105,7 @@ The default output path `./downloads/` is relative to the current working direct
 - Files landing in unexpected locations when run via cron or automation
 
 **Remediation:**
+
 1. Use `os.path.expanduser()` for sensible defaults: `os.path.join(os.path.expanduser('~'), 'Downloads')`
 2. Create the output directory if it doesn't exist: `os.makedirs(output_path, exist_ok=True)`
 3. Print the absolute output path after successful download
@@ -121,11 +125,13 @@ info = ydl.extract_info(url, download=True)
 ```
 
 While yt-dlp handles invalid URLs gracefully, missing validation means:
+
 - Non-YouTube URLs cause confusing errors upstream
 - Malformed URLs produce unhelpful tracebacks
 - Empty strings or whitespace are not caught early
 
 **Remediation:**
+
 ```python
 import re
 
@@ -157,6 +163,7 @@ The repository has zero test coverage. Risks include:
 - Edge cases (empty playlists, deleted videos, private videos) are untested
 
 **Remediation:**
+
 ```python
 # tests/test_downloader.py
 import pytest
@@ -186,6 +193,7 @@ def test_single_video_download(mock_ydl):
 **Status:** ❌ Unresolved  
 
 No `.github/workflows/` or CI configuration exists. Missing benefits:
+
 - Automated testing on pull requests
 - Dependency vulnerability scanning
 - Linting and code style enforcement
@@ -208,6 +216,7 @@ yt-dlp auto-updates by default (`--update`). This means the script's behavior ca
 **Status:** ❌ Unresolved  
 
 All output goes to stdout via `print()`. This means:
+
 - No log rotation for automated/batch downloads
 - No persistent record of download history
 - Errors cannot be audited retroactively
@@ -241,17 +250,17 @@ logging.basicConfig(
 
 ### Medium-term (1 month)
 
-6. Add per-video error handling in playlist/loop scripts (skip on failure)
-7. Implement basic test suite with mocked yt-dlp
-8. Add GitHub Actions CI for linting and testing
-9. Replace `print()` with proper `logging` module
+1. Add per-video error handling in playlist/loop scripts (skip on failure)
+2. Implement basic test suite with mocked yt-dlp
+3. Add GitHub Actions CI for linting and testing
+4. Replace `print()` with proper `logging` module
 
 ### Long-term (3 months)
 
-10. Add download resume support (yt-dlp's `--continue`)
-11. Implement parallel download option for playlists
-12. Add progress bar output (yt-dlp's `--progress` or `tqdm`)
-13. Create a unified CLI entry point with subcommands
+1. Add download resume support (yt-dlp's `--continue`)
+2. Implement parallel download option for playlists
+3. Add progress bar output (yt-dlp's `--progress` or `tqdm`)
+4. Create a unified CLI entry point with subcommands
 
 ---
 
@@ -266,6 +275,7 @@ Since these are CLI scripts run on the user's machine:
 - **Low risk** — Typical risks involve failed downloads, not security breaches
 
 The most security-relevant action is the inclusion of cookies for restricted content — if `cookies.txt` is used, it should be:
+
 - Kept out of version control (add to `.gitignore`)
 - Stored with restricted file permissions (`chmod 600`)
 - Deleted when no longer needed
