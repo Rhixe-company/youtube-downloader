@@ -18,7 +18,7 @@ The youtube-downloader repository contains four small Python CLI utility scripts
 ## Findings Summary
 
 | ID | Severity | Finding | Status |
-|----|----------|---------|--------|
+| ---- | ---------- | --------- | -------- |
 | F-001 | 🟢 LOW | No requirements.txt / dependency pinning | ❌ Unresolved |
 | F-002 | 🟢 LOW | No error handling for download failures | ❌ Unresolved |
 | F-003 | 🟢 LOW | Hardcoded default output path | ❌ Unresolved |

@@ -9,7 +9,7 @@ A Python CLI tool for downloading YouTube videos (single, playlist, and loop mod
 ## Technology Stack
 
 | Category | Technology |
-|---|---|
+| --- | --- |
 | **Runtime** | Python ^3.x |
 | **Language** | Python |
 | **Download Engine** | yt-dlp (latest) |
@@ -96,7 +96,7 @@ mypy *.py
 ## Scripts Overview
 
 | Script | Purpose |
-|---|---|
+| --- | --- |
 | `main_noplaylist.py` | Download a single video |
 | `main_playlist.py` | Download an entire playlist |
 | `main_loop_playlist.py` | Batch loop mode for continuous downloading |
@@ -129,7 +129,7 @@ mypy *.py
 ## Dependencies
 
 | Library | Purpose |
-|---|---|
+| --- | --- |
 | **yt-dlp** | YouTube downloading (active fork of youtube-dl) |
 | **curl_cffi** | Advanced HTTP fingerprinting for avoiding detection |
 

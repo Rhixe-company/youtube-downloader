@@ -108,7 +108,7 @@ def main():
 ### yt-dlp Options Reference
 
 | Option | Value | Purpose |
-|--------|-------|---------|
+| -------- | ------- | --------- |
 | `format` | `'bestvideo[height<=1080]+bestaudio/best[height<=1080]'` | Best 1080p video + best audio, merged |
 | `merge_output_format` | `'mkv'` | Container format for merged streams |
 | `outtmpl` | `'{output}/%(title)s.%(ext)s'` | Output filename template |
@@ -234,7 +234,7 @@ The playlist script uses a specific format priority:
 ```
 
 | Format Code | Resolution | Codec | Container |
-|------------|------------|-------|-----------|
+| ------------ | ------------ | ------- | ----------- |
 | `136` | 1280x720 (720p) | H.264 | mp4 |
 | `298` | 1280x720 (720p) | H.264 (DASH) | mp4 |
 | `232` | 1280x720 (720p) | H.264 (DASH) | mp4 |
@@ -335,7 +335,7 @@ pip install yt-dlp
 ## 6. File Comparison
 
 | Feature | main_noplaylist.py | main_playlist.py | main_loop_noplaylist.py | main_loop_playlist.py |
-|---------|-------------------|------------------|------------------------|---------------------|
+| --------- | ------------------- | ------------------ | ------------------------ | --------------------- |
 | Input | Single URL | Playlist URL | URLs file | Playlist URLs file |
 | Output | Single file | Directory per playlist | Multiple files | Multiple directories |
 | Format | `bestvideo+bestaudio` | `136+ba,298+ba,...` | Same as single | Same as playlist |

@@ -255,7 +255,7 @@ Each `.mkv` file includes:
 ## Troubleshooting
 
 | Problem | Likely Cause | Solution |
-|---------|-------------|----------|
+| --------- | ------------- | ---------- |
 | `yt-dlp: command not found` | yt-dlp not installed | `pip install yt-dlp` |
 | `ffmpeg not found` | ffmpeg not installed | Install ffmpeg via system package manager |
 | `HTTP Error 429` | Rate limited by YouTube | Add `'sleep_interval': 5` to ydl_opts |

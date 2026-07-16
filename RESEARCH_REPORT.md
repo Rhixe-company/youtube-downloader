@@ -2,111 +2,94 @@
 
 ## Project: youtube-downloader
 
-**Type:** YouTube CLI download tool
-**Tech Stack:** Python 3.x, yt-dlp[curl-cffi], FFmpeg, ruff, mypy, uv, pytest
+**Type:** YouTube CLI download tool (pure CLI, no web UI)
+**Tech Stack:** Python 3.11+ (recommended), yt-dlp[curl-cffi], FFmpeg, ruff, mypy
 **Status:** Active
+**Updated:** 2026-07-16
 
 ---
 
-## Similar Projects
+## 1. Project Overview
 
-| Project | URL | Why Relevant |
-|---------|-----|--------------|
-| Python-projects | `projects/Python-projects` | Shared Python CLI + requirements hygiene |
+Python CLI tool using yt-dlp + curl_cffi for YouTube downloads (single, playlist, loop/batch). Pure CLI, no web UI. Uses the yt-dlp Python API directly. **Python 3.11 is now the recommended minimum** (yt-dlp 2026.07.04 raised the floor; 3.10 EOL Oct 2026).
 
----
+## 2. yt-dlp Release Status (July 2026)
 
-## Key Findings
+**Latest stable: 2026.07.04** (~178K+ GitHub stars). Verified changelog highlights: raise minimum Python to 3.11 (#17034); `--write-link` output now validated/escaped (CVE-2026-55404 fix); extractor fixes (bandcamp, linkedin, omnyfm, instagram, bilibili); `--exec` now restricts unsafe `%(...)s` conversions (use `%(...)q`). **Pin to `yt-dlp>=2026.07.04`** to cover all known July-2026 CVEs.
 
-### yt-dlp + curl_cffi Best Practices (2026)
-- **yt-dlp** is gold standard — 100K+ stars, 1,800+ sites, daily updates
-- **Install `yt-dlp[curl-cffi]`** — `--impersonate chrome` bypasses bot protection
-- **`--download-archive archive.txt`** — skip already-downloaded content; essential for cron jobs
-- **`-o` output template** — `%(channel)s/%(upload_date)s_%(id)s.%(ext)s`; always include `%(id)s` to avoid title collisions
-- **Cookie support** — `--cookies-from-browser firefox` for gated content
-- **Format selector** — default `bv*+ba/b`; use `bv*[height<=1080]+ba*[ext=m4a]` for capped quality
-- **Post-processing** — `--embed-metadata --embed-thumbnail --embed-subs --embed-chapters` in one pass
+## 3. Security Vulnerabilities (Mid-2026 Cluster)
 
-### curl_cffi for Bot Protection Bypass
-- curl_cffi is a Python binding for curl-impersonate — mimics real browser TLS/JA3/HTTP2 fingerprints
-- yt-dlp auto-uses curl_cffi when available for `--impersonate chrome`
-- Key impersonation targets: `chrome`, `safari`, `safari_ios`, `firefox`, `edge`
-- **Limitations**: beats TLS/HTTP2 fingerprinting; does NOT solve JavaScript challenges (Cloudflare Turnstile)
+yt-dlp had 5+ CVEs since Feb 2026; all fixed in current stable:
 
-### Legal Landscape (2026)
-- 2026 DMCA ruling: third-party downloading ruled as copyright circumvention; personal use only
-- Creative Commons content explicitly downloadable — filter with `--match-filter "license!=*"`
-- YouTube Premium offline download is the only legal method for copyrighted content
-- Tool itself not infringing (RIAA vs youtube-dl 2020); distribution for infringing use is the risk
+| CVE | CVSS | Description | Fixed In |
+|-----|------|-------------|----------|
+| CVE-2026-55404 | 7.5 High | `--write-link` produces shortcut files with injected `file://` URIs — RCE when opened | 2026.07.04 |
+| CVE-2026-50574 | 8.3 High | Unsanitized aria2c input via HLS/DASH manifests — RCE on Windows | 2026.06.09 |
+| CVE-2026-50023 | 8.3 High | Bypass of CVE-2024-38519 — arbitrary OS-shortcut files | 2026.06.09 |
+| CVE-2026-50019 | 6.1 Med | Cookie leak via curl redirects | 2026.06.09 |
+| CVE-2026-26331 | 7.5 High | Command injection via `--netrc-cmd` | 2026.02.21 |
 
----
+**Action:** Always `pip install -U yt-dlp`. Never use versions between 2026.02.21–2026.07.03 in production. Note: yt-dlp **deprecated Bun** as a runtime (supported only 1.2.11–1.3.14); use Python.
 
-## Cheatsheets & Quick Reference
+## 4. Bot Protection & 403 Fixes
 
-| Topic | Resource | Type |
-|-------|----------|------|
-| yt-dlp docs | <https://github.com/yt-dlp/yt-dlp> | Docs |
-| curl_cffi | <https://github.com/yifeikong/curl_cffi> | Package |
-| yt-dlp format selection | <https://github.com/yt-dlp/yt-dlp#format-selection> | Guide |
+**PO Token mismatch** (2026 issue): YouTube 403 errors when PO token client doesn't match download client. Fix: `--impersonate chrome --check-formats --rm-cache-dir` and force `player_client: ['web', 'web_safari']`. Deno may be needed for PO token generation. `curl_cffi` required for `--impersonate` — install `yt-dlp[curl-cffi]` (curl_cffi 0.15.x supported).
 
----
+## 5. Best Practices
 
-## Best Practices
+- **Format selectors** over numeric codes: `bv*[height<=1080]+ba/b`
+- **`%(id)s`** in output template to prevent title collisions
+- **`--download-archive archive.txt`** for idempotent runs
+- **Embed all metadata in one pass** (FFmpegMetadata + EmbedThumbnail + EmbedSubtitle)
+- **`--ignoreerrors`** for playlist pipelines
+- **`--merge-output-format mp4`** for consistent output
+- **`--concurrent-fragments 5`** (max 10) for DASH speed
+- **`--sponsorblock-mark`** for built-in sponsor marking
 
-1. **`--impersonate chrome`** — bypass bot protection via curl_cffi
-2. **`--download-archive`** — skip duplicates; essential for automation
-3. **Include `%(id)s` in output template** — avoid title collisions
-4. **`--embed-metadata`** — embed all metadata in one pass
-5. **FFmpeg post-processing** — set `--merge-output-format mp4` for consistent output
+## 6. Common Pitfalls
 
----
+| Pitfall | Severity | Fix |
+|---------|----------|-----|
+| Numeric format codes in scripts | HIGH | `bv*[height<=1080]+ba/b` |
+| Missing `%(id)s` in output template | HIGH | Add `%(id)s` to `outtmpl` |
+| No `download_archive` | HIGH | Add `archive.txt` |
+| No `impersonate` / curl_cffi | MEDIUM | Add player_client args |
+| No `ignoreerrors` | MEDIUM | Add to playlist scripts |
+| No rate limiting | MEDIUM | Add sleep/ratelimit options |
 
-## Common Pitfalls
+## 7. Similar Projects
 
-| Pitfall | Impact | Avoidance |
-|--------|--------|-----------|
-| No curl_cffi installed | Bot detection blocks | `pip install "yt-dlp[curl-cffi]"` |
-| Missing `%(id)s` in output | Files overwritten | Always include `%(id)s` in template |
-| No download archive | Repeated downloads | `--download-archive archive.txt` |
-| Missing FFmpeg | Merge/subs fail | Install FFmpeg system-wide |
+| Project | Stars | Use Case |
+|---------|-------|----------|
+| yt-dlp | 178K+ | **Default choice** — active, 1800+ sites |
+| youtube-dl | Stagnant | Legacy only |
+| YouTube Data API v3 | — | Metadata/search (combo with yt-dlp) |
+| tartube / Parabolic / Stacher | — | GUI wrappers around yt-dlp |
 
----
+## 8. Performance Tips
 
-## Performance
+- **Concurrent fragments:** 5 for DASH; >10 risks rate limits
+- **aria2c:** `-x 16 -k 1M` for large files (but `--impersonate` won't apply)
+- **Rate limit:** `--limit-rate 5M` prevents throttling
+- **Cap quality:** 720p vs 4K = 5× less bandwidth
+- **Archive:** O(1) set lookups, ~1.6MB for 70K entries
+- **Batch:** one process per playlist; parallel processes for multi-video
 
-1. **curl_cffi impersonation** — avoids bot-related rate limiting
-2. **Format selection limiting** — cap quality to reduce download time and storage
-3. **Download archive** — skip already-fetched content
-4. **Concurrent downloads** — yt-dlp `--concurrent-fragments` for DASH streams
-5. **Batch playlist mode** — single process for entire playlists
+## 9. Legal Landscape
 
----
+2026 DMCA §1201 ruling classified third-party streaming downloads as copyright circumvention. Personal use has a narrow defense; Creative Commons explicitly permitted (`--match-filter "license!=*"`). YouTube Premium ($14/mo) is the only fully legal method for copyrighted offline viewing.
 
-## Security
+## 10. Resources
 
-1. **No hardcoded cookies** — use `--cookies-from-browser` for authenticated access
-2. **Validate output paths** — prevent path traversal via `..` in filenames
-3. **Respect copyright** — personal use only; Creative Commons when possible
-4. **FFmpeg from trusted source** — official builds only to avoid malware
+| Resource | URL |
+|----------|-----|
+| yt-dlp GitHub | https://github.com/yt-dlp/yt-dlp |
+| Releases / Changelog | https://github.com/yt-dlp/yt-dlp/releases |
+| Version history (videohelp) | https://www.videohelp.com/software/yt-dlp/version-history |
+| Security advisories | https://github.com/yt-dlp/yt-dlp/security |
+| curl_cffi | https://github.com/yifeikong/curl_cffi |
+| Format selection | https://github.com/yt-dlp/yt-dlp#format-selection |
 
----
-
-## Related Projects (in workspace)
-
-- **Python-projects** — shared Python CLI tooling patterns
-
----
-
-## Resources
-
-| Resource | URL | Description |
-|----------|-----|-------------|
-| yt-dlp GitHub | <https://github.com/yt-dlp/yt-dlp> | Download tool |
-| curl_cffi | <https://github.com/yifeikong/curl_cffi> | TLS impersonation |
-| yt-dlp format selection | <https://github.com/yt-dlp/yt-dlp#format-selection> | Format syntax |
-
-### Research Methodology
-- **Web search:** web_search (2026 yt-dlp patterns, legal landscape)
-- **Documentation:** web_extract (yt-dlp, curl_cffi docs)
-- **Legal research:** DMCA 2026 rulings on third-party downloading
-- **Last verified:** 2026-07-16
+### Methodology
+- 3 web searches (yt-dlp 2026.07.04, PO token 403 fixes, curl_cffi impersonate) + 1 web_extract verification (videohelp version history).
+- **Last verified:** 2026-07-16.
