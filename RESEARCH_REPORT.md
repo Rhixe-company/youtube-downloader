@@ -18,25 +18,23 @@
 
 ## Key Findings
 
-### yt-dlp + curl_cffi Best Practices (2026)
-- **yt-dlp** is gold standard — 100K+ stars, 1,800+ sites, daily updates
+### yt-dlp Best Practices (2026)
+- **yt-dlp** is gold standard — 149K+ stars, 1,800+ sites, daily updates
 - **Install `yt-dlp[curl-cffi]`** — `--impersonate chrome` bypasses bot protection
 - **`--download-archive archive.txt`** — skip already-downloaded content; essential for cron jobs
-- **`-o` output template** — `%(channel)s/%(upload_date)s_%(id)s.%(ext)s`; always include `%(id)s` to avoid title collisions
+- **`-o` output template** — always include `%(id)s` to avoid title collisions; prefer `bestvideo[height<=1080]+bestaudio` over hardcoded numeric format codes
+- **Rate limiting** — `--limit-rate 5M --sleep-interval 5 --max-sleep-interval 15` for unattended jobs
 - **Cookie support** — `--cookies-from-browser firefox` for gated content
-- **Format selector** — default `bv*+ba/b`; use `bv*[height<=1080]+ba*[ext=m4a]` for capped quality
 - **Post-processing** — `--embed-metadata --embed-thumbnail --embed-subs --embed-chapters` in one pass
 
 ### curl_cffi for Bot Protection Bypass
-- curl_cffi is a Python binding for curl-impersonate — mimics real browser TLS/JA3/HTTP2 fingerprints
-- yt-dlp auto-uses curl_cffi when available for `--impersonate chrome`
+- Python binding for curl-impersonate — mimics real browser TLS/JA3/HTTP2 fingerprints
 - Key impersonation targets: `chrome`, `safari`, `safari_ios`, `firefox`, `edge`
 - **Limitations**: beats TLS/HTTP2 fingerprinting; does NOT solve JavaScript challenges (Cloudflare Turnstile)
 
 ### Legal Landscape (2026)
 - 2026 DMCA ruling: third-party downloading ruled as copyright circumvention; personal use only
 - Creative Commons content explicitly downloadable — filter with `--match-filter "license!=*"`
-- YouTube Premium offline download is the only legal method for copyrighted content
 - Tool itself not infringing (RIAA vs youtube-dl 2020); distribution for infringing use is the risk
 
 ---
@@ -55,20 +53,21 @@
 
 1. **`--impersonate chrome`** — bypass bot protection via curl_cffi
 2. **`--download-archive`** — skip duplicates; essential for automation
-3. **Include `%(id)s` in output template** — avoid title collisions
-4. **`--embed-metadata`** — embed all metadata in one pass
-5. **FFmpeg post-processing** — set `--merge-output-format mp4` for consistent output
+3. **Always include `%(id)s`** in output template — prevent filename collisions
+4. **Rate limit yourself** — `--limit-rate 5M --sleep-interval 5` for cron/automation
+5. **`--embed-metadata`** — embed all metadata in one pass
 
 ---
 
 ## Common Pitfalls
 
 | Pitfall | Impact | Avoidance |
-|--------|--------|-----------|
+|---------|--------|-----------|
 | No curl_cffi installed | Bot detection blocks | `pip install "yt-dlp[curl-cffi]"` |
 | Missing `%(id)s` in output | Files overwritten | Always include `%(id)s` in template |
 | No download archive | Repeated downloads | `--download-archive archive.txt` |
 | Missing FFmpeg | Merge/subs fail | Install FFmpeg system-wide |
+| Hardcoded format codes | Format no longer exists | Use expressions like `bestvideo[height<=1080]+bestaudio` |
 
 ---
 
@@ -77,8 +76,8 @@
 1. **curl_cffi impersonation** — avoids bot-related rate limiting
 2. **Format selection limiting** — cap quality to reduce download time and storage
 3. **Download archive** — skip already-fetched content
-4. **Concurrent downloads** — yt-dlp `--concurrent-fragments` for DASH streams
-5. **Batch playlist mode** — single process for entire playlists
+4. **Concurrent fragments** — yt-dlp `--concurrent-fragments` for DASH streams
+5. **Rate limiting** — prevents IP throttling/blocking
 
 ---
 
@@ -94,6 +93,7 @@
 ## Related Projects (in workspace)
 
 - **Python-projects** — shared Python CLI tooling patterns
+- **selenium_webdriver** — shared web scraping and automation patterns
 
 ---
 
@@ -106,7 +106,6 @@
 | yt-dlp format selection | <https://github.com/yt-dlp/yt-dlp#format-selection> | Format syntax |
 
 ### Research Methodology
-- **Web search:** web_search (2026 yt-dlp patterns, legal landscape)
+- **Web search:** web_search (2026 yt-dlp patterns, DEV Community, legal landscape)
 - **Documentation:** web_extract (yt-dlp, curl_cffi docs)
-- **Legal research:** DMCA 2026 rulings on third-party downloading
-- **Last verified:** 2026-07-16
+- **Last verified:** 2026-07-28

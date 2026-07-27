@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import yt_dlp
 from yt_dlp.utils import download_range_func  # noqa: F401
 
