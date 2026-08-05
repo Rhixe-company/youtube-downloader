@@ -1,0 +1,20 @@
+target-version = "py311"
+line-length = 120
+exclude = [
+  "node_modules/",
+  "myvenv/",
+  ".venv/",
+  ".git/",
+  "__pycache__/",
+  "**/build/",
+  "**/dist/",
+]
+
+[lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "SIM", "ARG", "RUF"]
+ignore = ["E501", "N818"]
+
+[format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"

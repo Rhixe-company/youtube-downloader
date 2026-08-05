@@ -107,18 +107,18 @@ def main():
 
 ### yt-dlp Options Reference
 
-| Option | Value | Purpose |
-|--------|-------|---------|
-| `format` | `'bestvideo[height<=1080]+bestaudio/best[height<=1080]'` | Best 1080p video + best audio, merged |
-| `merge_output_format` | `'mkv'` | Container format for merged streams |
-| `outtmpl` | `'{output}/%(title)s.%(ext)s'` | Output filename template |
-| `writesubtitles` | `True` | Download available subtitles |
-| `writeautomaticsub` | `True` | Download auto-generated captions |
-| `subtitleslangs` | `['en']` | English subtitles only |
-| `embedsubs` | `True` | Embed subtitles in output file |
-| `embedthumbnail` | `True` | Embed thumbnail as cover art |
-| `writethumbnail` | `True` | Write thumbnail as separate file |
-| `postprocessors` | `[FFmpegMetadata, EmbedThumbnail]` | Embed metadata and thumbnail |
+| Option                | Value                                                    | Purpose                               |
+| --------------------- | -------------------------------------------------------- | ------------------------------------- |
+| `format`              | `'bestvideo[height<=1080]+bestaudio/best[height<=1080]'` | Best 1080p video + best audio, merged |
+| `merge_output_format` | `'mkv'`                                                  | Container format for merged streams   |
+| `outtmpl`             | `'{output}/%(title)s.%(ext)s'`                           | Output filename template              |
+| `writesubtitles`      | `True`                                                   | Download available subtitles          |
+| `writeautomaticsub`   | `True`                                                   | Download auto-generated captions      |
+| `subtitleslangs`      | `['en']`                                                 | English subtitles only                |
+| `embedsubs`           | `True`                                                   | Embed subtitles in output file        |
+| `embedthumbnail`      | `True`                                                   | Embed thumbnail as cover art          |
+| `writethumbnail`      | `True`                                                   | Write thumbnail as separate file      |
+| `postprocessors`      | `[FFmpegMetadata, EmbedThumbnail]`                       | Embed metadata and thumbnail          |
 
 ---
 
@@ -233,12 +233,12 @@ The playlist script uses a specific format priority:
 '136+ba,298+ba,232+ba,bv+ba'
 ```
 
-| Format Code | Resolution | Codec | Container |
-|------------|------------|-------|-----------|
-| `136` | 1280x720 (720p) | H.264 | mp4 |
-| `298` | 1280x720 (720p) | H.264 (DASH) | mp4 |
-| `232` | 1280x720 (720p) | H.264 (DASH) | mp4 |
-| `bv+ba` | Best available | Any | Any |
+| Format Code | Resolution      | Codec        | Container |
+| ----------- | --------------- | ------------ | --------- |
+| `136`       | 1280x720 (720p) | H.264        | mp4       |
+| `298`       | 1280x720 (720p) | H.264 (DASH) | mp4       |
+| `232`       | 1280x720 (720p) | H.264 (DASH) | mp4       |
+| `bv+ba`     | Best available  | Any          | Any       |
 
 **Note:** `+ba` appends the best audio stream to the selected video. yt-dlp will try each format in order until one succeeds.
 
@@ -313,10 +313,10 @@ All scripts use minimal error handling:
 
 ### Required
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `yt-dlp` | Latest | YouTube downloading and extraction |
-| `ffmpeg` | System | Stream merging, metadata embedding, subtitle muxing |
+| Package  | Version | Purpose                                             |
+| -------- | ------- | --------------------------------------------------- |
+| `yt-dlp` | Latest  | YouTube downloading and extraction                  |
+| `ffmpeg` | System  | Stream merging, metadata embedding, subtitle muxing |
 
 ### Installation
 
@@ -334,10 +334,10 @@ pip install yt-dlp
 
 ## 6. File Comparison
 
-| Feature | main_noplaylist.py | main_playlist.py | main_loop_noplaylist.py | main_loop_playlist.py |
-|---------|-------------------|------------------|------------------------|---------------------|
-| Input | Single URL | Playlist URL | URLs file | Playlist URLs file |
-| Output | Single file | Directory per playlist | Multiple files | Multiple directories |
-| Format | `bestvideo+bestaudio` | `136+ba,298+ba,...` | Same as single | Same as playlist |
-| Subdirs | No | Yes (per playlist) | No | Yes (per playlist) |
-| Limit | N/A | Optional --limit | N/A | Optional --limit |
+| Feature | main_noplaylist.py    | main_playlist.py       | main_loop_noplaylist.py | main_loop_playlist.py |
+| ------- | --------------------- | ---------------------- | ----------------------- | --------------------- |
+| Input   | Single URL            | Playlist URL           | URLs file               | Playlist URLs file    |
+| Output  | Single file           | Directory per playlist | Multiple files          | Multiple directories  |
+| Format  | `bestvideo+bestaudio` | `136+ba,298+ba,...`    | Same as single          | Same as playlist      |
+| Subdirs | No                    | Yes (per playlist)     | No                      | Yes (per playlist)    |
+| Limit   | N/A                   | Optional --limit       | N/A                     | Optional --limit      |

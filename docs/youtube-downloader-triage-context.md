@@ -14,9 +14,9 @@ variants for both. Has CONTRIBUTING, CODE_OF_CONDUCT, and `docs/SETUP.md`.
 
 ## Issues Found & Fixed
 
-| # | Issue | Action | Commit |
-|---|-------|--------|--------|
-| 1 | `.vscode/extensions.json` and `.vscode/settings.json` tracked and deleted from disk | Staged removals; `.gitignore` already has `.vscode/*` rule to prevent recurrence | `432305c` |
+| #   | Issue                                                                               | Action                                                                           | Commit    |
+| --- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | --------- |
+| 1   | `.vscode/extensions.json` and `.vscode/settings.json` tracked and deleted from disk | Staged removals; `.gitignore` already has `.vscode/*` rule to prevent recurrence | `432305c` |
 
 ## Final State
 

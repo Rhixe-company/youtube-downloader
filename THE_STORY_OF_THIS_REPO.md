@@ -1,6 +1,6 @@
 # The Story of youtube-downloader
 
-*The CLI that downloaded 10,000 videos so you didn't have to*
+_The CLI that downloaded 10,000 videos so you didn't have to_
 
 ---
 
@@ -38,12 +38,12 @@ That's it. The rest is UX.
 
 ## Chapter 2: The Four Modes
 
-| Script | Use Case |
-|--------|----------|
-| `main_noplaylist.py` | One video, best quality |
-| `main_playlist.py` | Entire channel/playlist |
-| `main_loop_noplaylist.py` | URLs from `urls.txt` |
-| `main_loop_playlist.py` | Playlist URLs from `playlists.txt` |
+| Script                    | Use Case                           |
+| ------------------------- | ---------------------------------- |
+| `main_noplaylist.py`      | One video, best quality            |
+| `main_playlist.py`        | Entire channel/playlist            |
+| `main_loop_noplaylist.py` | URLs from `urls.txt`               |
+| `main_loop_playlist.py`   | Playlist URLs from `playlists.txt` |
 
 **Loop mode** reads a file, downloads sequentially, logs progress, resumes on failure.
 
@@ -110,7 +110,7 @@ Arguments via `sys.argv`. Output to `./downloads/`. Logs to stdout.
 import subprocess
 
 result = subprocess.run([
-    'python', 'main_noplaylist.py', 
+    'python', 'main_noplaylist.py',
     'https://youtube.com/watch?v=jNQXAC9IVRw'
 ], capture_output=True, text=True)
 
@@ -132,5 +132,5 @@ The best tool is the one you forget exists — until you need it, and it works.
 
 ---
 
-*Written by the workspace chronicler, July 25, 2025.  
-Filed at `projects/youtube-downloader/THE_STORY_OF_THIS_REPO.md`.*
+_Written by the workspace chronicler, July 25, 2025.  
+Filed at `projects/youtube-downloader/THE_STORY_OF_THIS_REPO.md`._

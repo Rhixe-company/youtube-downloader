@@ -254,15 +254,15 @@ Each `.mkv` file includes:
 
 ## Troubleshooting
 
-| Problem | Likely Cause | Solution |
-|---------|-------------|----------|
-| `yt-dlp: command not found` | yt-dlp not installed | `pip install yt-dlp` |
-| `ffmpeg not found` | ffmpeg not installed | Install ffmpeg via system package manager |
-| `HTTP Error 429` | Rate limited by YouTube | Add `'sleep_interval': 5` to ydl_opts |
-| `[Private video]` | Video is private | Cannot download private videos |
-| `[Age-restricted]` | Age-restricted content | Add `'age_limit': 18` or use YouTube cookies |
-| `No video formats found` | Region/copyright block | Use VPN or proxy |
-| File not merging | ffmpeg version issue | Update ffmpeg to latest version |
+| Problem                     | Likely Cause            | Solution                                     |
+| --------------------------- | ----------------------- | -------------------------------------------- |
+| `yt-dlp: command not found` | yt-dlp not installed    | `pip install yt-dlp`                         |
+| `ffmpeg not found`          | ffmpeg not installed    | Install ffmpeg via system package manager    |
+| `HTTP Error 429`            | Rate limited by YouTube | Add `'sleep_interval': 5` to ydl_opts        |
+| `[Private video]`           | Video is private        | Cannot download private videos               |
+| `[Age-restricted]`          | Age-restricted content  | Add `'age_limit': 18` or use YouTube cookies |
+| `No video formats found`    | Region/copyright block  | Use VPN or proxy                             |
+| File not merging            | ffmpeg version issue    | Update ffmpeg to latest version              |
 
 ### Adding Cookie Support for Restricted Content
 

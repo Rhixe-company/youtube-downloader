@@ -42,11 +42,11 @@ python main_loop_playlist.py   # Playlist loop
 
 ## Common Commands
 
-| Command | Description |
-| --- | --- |
-| `python test.py` | Run test suite |
-| `python -m pytest` | Run pytest |
-| `ruff check .` | Run linter |
+| Command            | Description    |
+| ------------------ | -------------- |
+| `python test.py`   | Run test suite |
+| `python -m pytest` | Run pytest     |
+| `ruff check .`     | Run linter     |
 
 ## Troubleshooting
 

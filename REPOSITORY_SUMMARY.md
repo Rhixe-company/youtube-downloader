@@ -11,22 +11,22 @@
 
 ## Architecture
 
-| Property | Value |
-|----------|-------|
-| **Type** | Single-file Python CLI scripts |
-| **Pattern** | Wrapper around yt-dlp + curl_cffi |
-| **Modes** | Single video, playlist, loop/batch |
+| Property    | Value                              |
+| ----------- | ---------------------------------- |
+| **Type**    | Single-file Python CLI scripts     |
+| **Pattern** | Wrapper around yt-dlp + curl_cffi  |
+| **Modes**   | Single video, playlist, loop/batch |
 
 ---
 
 ## Technology Stack
 
-| Layer | Technology |
-|-------|------------|
-| **Language** | Python 3.x |
-| **Core** | `yt-dlp`, `curl_cffi` |
-| **Quality** | `ruff` (lint), `mypy` (type check, optional) |
-| **External** | FFmpeg (for post-processing) |
+| Layer        | Technology                                   |
+| ------------ | -------------------------------------------- |
+| **Language** | Python 3.x                                   |
+| **Core**     | `yt-dlp`, `curl_cffi`                        |
+| **Quality**  | `ruff` (lint), `mypy` (type check, optional) |
+| **External** | FFmpeg (for post-processing)                 |
 
 ---
 
@@ -71,11 +71,11 @@ python test.py
 
 ## Modes
 
-| Script | Purpose |
-|--------|---------|
-| `main_noplaylist.py` | Download single video |
-| `main_playlist.py` | Download entire playlist |
-| `main_loop_playlist.py` | Batch download multiple playlists |
+| Script                    | Purpose                               |
+| ------------------------- | ------------------------------------- |
+| `main_noplaylist.py`      | Download single video                 |
+| `main_playlist.py`        | Download entire playlist              |
+| `main_loop_playlist.py`   | Batch download multiple playlists     |
 | `main_loop_noplaylist.py` | Batch download multiple single videos |
 
 ---

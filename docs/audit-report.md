@@ -3,7 +3,7 @@
 **Repository:** Rhixe-company/youtube-downloader  
 **Audit Date:** 2026-05-21  
 **Priority:** LOW  
-**Auditor:** Automated Security Scan  
+**Auditor:** Automated Security Scan
 
 ---
 
@@ -17,16 +17,16 @@ The youtube-downloader repository contains four small Python CLI utility scripts
 
 ## Findings Summary
 
-| ID | Severity | Finding | Status |
-|----|----------|---------|--------|
-| F-001 | 🟢 LOW | No requirements.txt / dependency pinning | ❌ Unresolved |
-| F-002 | 🟢 LOW | No error handling for download failures | ❌ Unresolved |
-| F-003 | 🟢 LOW | Hardcoded default output path | ❌ Unresolved |
-| F-004 | 🟢 LOW | No input validation on URLs | ❌ Unresolved |
-| F-005 | 🟢 LOW | No automated tests | ❌ Unresolved |
-| F-006 | 🟢 LOW | No CI/CD configuration | ❌ Unresolved |
-| F-007 | ℹ️ INFO | yt-dlp auto-updates — no version pin | ❌ Unresolved |
-| F-008 | ℹ️ INFO | No logging — stdout only | ❌ Unresolved |
+| ID    | Severity | Finding                                  | Status        |
+| ----- | -------- | ---------------------------------------- | ------------- |
+| F-001 | 🟢 LOW   | No requirements.txt / dependency pinning | ❌ Unresolved |
+| F-002 | 🟢 LOW   | No error handling for download failures  | ❌ Unresolved |
+| F-003 | 🟢 LOW   | Hardcoded default output path            | ❌ Unresolved |
+| F-004 | 🟢 LOW   | No input validation on URLs              | ❌ Unresolved |
+| F-005 | 🟢 LOW   | No automated tests                       | ❌ Unresolved |
+| F-006 | 🟢 LOW   | No CI/CD configuration                   | ❌ Unresolved |
+| F-007 | ℹ️ INFO  | yt-dlp auto-updates — no version pin     | ❌ Unresolved |
+| F-008 | ℹ️ INFO  | No logging — stdout only                 | ❌ Unresolved |
 
 ---
 
@@ -36,7 +36,7 @@ The youtube-downloader repository contains four small Python CLI utility scripts
 
 **Category:** Operational  
 **Severity:** 🟢 LOW  
-**Status:** ❌ Unresolved  
+**Status:** ❌ Unresolved
 
 The repository has no `requirements.txt` file. Users must manually install `yt-dlp` without version constraints. This can lead to:
 
@@ -61,7 +61,7 @@ yt-dlp>=2023.0.0,<2025.0.0
 
 **Category:** Robustness  
 **Severity:** 🟢 LOW  
-**Status:** ❌ Unresolved  
+**Status:** ❌ Unresolved
 
 Download failures from yt-dlp are not caught or handled gracefully:
 
@@ -92,7 +92,7 @@ except yt_dlp.utils.ExtractorError as e:
 
 **Category:** Operational  
 **Severity:** 🟢 LOW  
-**Status:** ❌ Unresolved  
+**Status:** ❌ Unresolved
 
 ```python
 def download_single_video(url: str, output_path: str = "downloads"):
@@ -114,7 +114,7 @@ The default output path `./downloads/` is relative to the current working direct
 
 **Category:** Operational  
 **Severity:** 🟢 LOW  
-**Status:** ❌ Unresolved  
+**Status:** ❌ Unresolved
 
 URLs are passed directly to yt-dlp without any validation or sanitization:
 
@@ -154,7 +154,7 @@ if not validate_youtube_url(url):
 
 **Category:** Quality Assurance  
 **Severity:** 🟢 LOW  
-**Status:** ❌ Unresolved  
+**Status:** ❌ Unresolved
 
 The repository has zero test coverage. Risks include:
 
@@ -190,7 +190,7 @@ def test_single_video_download(mock_ydl):
 
 **Category:** Operations  
 **Severity:** 🟢 LOW  
-**Status:** ❌ Unresolved  
+**Status:** ❌ Unresolved
 
 No `.github/workflows/` or CI configuration exists. Missing benefits:
 
@@ -203,7 +203,7 @@ No `.github/workflows/` or CI configuration exists. Missing benefits:
 
 **Category:** Operational  
 **Severity:** ℹ️ INFO  
-**Status:** ❌ Unresolved  
+**Status:** ❌ Unresolved
 
 yt-dlp auto-updates by default (`--update`). This means the script's behavior can change without explicit dependency updates. While yt-dlp maintains backward compatibility, major site changes (e.g., YouTube API changes) can temporarily break functionality.
 
@@ -213,7 +213,7 @@ yt-dlp auto-updates by default (`--update`). This means the script's behavior ca
 
 **Category:** Operational  
 **Severity:** ℹ️ INFO  
-**Status:** ❌ Unresolved  
+**Status:** ❌ Unresolved
 
 All output goes to stdout via `print()`. This means:
 
