@@ -1,0 +1,7 @@
+# youtube-downloader — Bun configuration
+# Python CLI downloader for YouTube (yt-dlp + curl_cffi)
+
+[install]
+optional = true
+dev = true
+peer = true
