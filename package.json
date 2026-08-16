@@ -1,0 +1,12 @@
+{
+  "name": "youtube-downloader",
+  "version": "1.0.0",
+  "description": "YouTube video/audio downloader (Python)",
+  "type": "module",
+  "packageManager": "bun@1.3.14",
+  "scripts": {
+    "check": "echo 'YouTube downloader — Python CLI tool'",
+    "lint": "ruff check .",
+    "typecheck": "pyright ."
+  }
+}
